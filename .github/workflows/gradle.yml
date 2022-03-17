@@ -2,7 +2,7 @@ name: Java CI
 
 on:
   tags:
-    - *
+    - "*"
 
 jobs:
   build:
