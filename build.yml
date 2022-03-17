@@ -1,0 +1,52 @@
+version: 1.0
+openAPIGeneratorVersion: 5.3.1
+javaBasePackage: com.pigumer.example
+openAPISpec: spec/openapi.yml
+properties:
+  GroupId: com.pigumer.example-service
+  ScopeId: takesection
+  ServiceId: example
+  SnapshotVersion: true
+modules:
+  - name: build/service-spring-appservice.yaml
+    template:
+      inputSpec: "{{openAPISpec}}"
+      generatorName: spring
+      outputDir: out/spring-appservice
+      additionalProperties:
+        configPackage: "{{javaBasePackage}}.controller.configuration"
+        modelPackage: "{{javaBasePackage}}.controller.model"
+        apiPackage: "{{javaBasePackage}}.controller.api"
+        invokerPackage: "{{javaBasePackage}}.controller.api"
+        groupId: "{{GroupId}}"
+        dateLibrary: java8
+        java8: true
+        library: spring-boot
+        artifactId: "{{ServiceId}}-service-appservice"
+        interfaceOnly: true
+        snapshotVersion: "{{SnapshotVersion}}"
+  - name: build/service-spring-controller.yaml
+    options: -Xmx1024M -DloggerPath=conf/log4j.properties -DsupportingFiles
+    template:
+      inputSpec: "{{openAPISpec}}"
+      generatorName: spring
+      outputDir: out/spring-controller
+      additionalProperties:
+        configPackage: "{{javaBasePackage}}.controller.configuration"
+        modelPackage: "{{javaBasePackage}}.controller.model"
+        apiPackage: "{{javaBasePackage}}.controller.api"
+        invokerPackage: "{{javaBasePackage}}.controller.api"
+        groupId: "{{GroupId}}"
+        dateLibrary: java8
+        java8: true
+        library: spring-boot
+        artifactId: "{{ServiceId}}-service-controller"
+        snapshotVersion: "{{SnapshotVersion}}"
+  - name: build/service-axios-client.yaml
+    template:
+      inputSpec: "{{openAPISpec}}"
+      outputDir: out/client
+      generatorName: typescript-axios
+      additionalProperties:
+        npmName: "@{{ScopeId}}/{{ServiceId}}-axios-client"
+        npmVersion: "{{specVersion}}-{{now}}"

@@ -1,0 +1,11 @@
+.idea
+out
+.gradle
+build/
+services/
+public/
+target/
+node_modules/
+/openapi-generator-cli.jar
+.DS_Store
+/log
