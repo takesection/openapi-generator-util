@@ -1,4 +1,5 @@
-![build workflow](https://github.com/takesection/openapi-generator-util/actions/workflows/gradle.yml/badge.svg)
+![build workflow](https://github.com/takesection/openapi-generator-util/actions/workflows/build.yml/badge.svg)
+![release workflow](https://github.com/takesection/openapi-generator-util/actions/workflows/release.yml/badge.svg)
 
 OpenAPI Generator ユーティリティ
 ===

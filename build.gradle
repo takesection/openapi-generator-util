@@ -7,7 +7,7 @@ plugins {
 apply plugin: "com.github.johnrengelman.shadow"
 
 group = 'com.pigumer.tools'
-version = '0.1.0'
+version = '0.1.0-SNAPSHOT'
 sourceCompatibility = '11'
 targetCompatibility = '11'
 compileJava.options.encoding = 'UTF-8'
